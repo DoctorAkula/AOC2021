@@ -7,6 +7,7 @@ use crate::day03::*;
 
 use std::env;
 use std::process::exit;
+use std::time::Instant;
 
 fn main() {
     let funcs : [Option<fn()>; 50] = [
@@ -57,7 +58,11 @@ fn main() {
 
     let index = (day - 1) * 2 + (problem - 1);
     match funcs[index] {
-        Some(func) => func(),
+        Some(func) => {
+            let timeit = Instant::now();
+            func();
+            println!("\n Timing results:\n===============================\n Duration: {:.15}s", timeit.elapsed().as_secs_f64());
+        }
         None => {
             eprintln!("Day {}, Problem {} not implemented yet!", day, problem);
             exit(4);
