@@ -8,7 +8,7 @@ use std::process::exit;
 
 fn main() {
     let funcs : [Option<fn()>; 50] = [
-        Some(day01p1), None,
+        Some(day01p1), Some(day01p2),
         None         , None,
         None         , None,
         None         , None,
