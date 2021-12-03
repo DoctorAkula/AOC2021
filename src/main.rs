@@ -1,7 +1,8 @@
 mod loadinput;
-mod day01;
+mod day01; mod day02;
 
 use crate::day01::*;
+use crate::day02::*;
 
 use std::env;
 use std::process::exit;
@@ -9,7 +10,7 @@ use std::process::exit;
 fn main() {
     let funcs : [Option<fn()>; 50] = [
         Some(day01p1), Some(day01p2),
-        None         , None,
+        Some(day02p1), Some(day02p2),
         None         , None,
         None         , None,
         None         , None,
