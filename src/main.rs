@@ -39,8 +39,19 @@ fn main() {
     ];
 
     let args : Vec<String> = env::args().collect();
-    if args.len() != 3 {
-        eprintln!("{} Usage: <Day> <Problem>", args[0]);
+    if args.len() == 1{
+        println!("Running all available solutions...");
+        let timeit = Instant::now();
+        for (fnum, func) in funcs.into_iter().enumerate() {
+            if let Some(func) = func{
+                println!("\nDay: {}, Problem: {}", (fnum >> 1) + 1, (fnum & 1) + 1);
+                func();
+            }
+        }
+        println!("\n Timing results for all:\n===============================\n Duration: {:.15}s", timeit.elapsed().as_secs_f64());
+        exit(0)
+    }else if args.len() != 3 {
+        eprintln!("{} Usage: [<Day> <Problem>]", args[0]);
         exit(1);
     }
 
