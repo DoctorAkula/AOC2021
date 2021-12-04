@@ -1,9 +1,10 @@
 mod loadinput;
-mod day01; mod day02; mod day03;
+mod day01; mod day02; mod day03; mod day04;
 
 use crate::day01::*;
 use crate::day02::*;
 use crate::day03::*;
+use crate::day04::*;
 
 use std::env;
 use std::process::exit;
@@ -14,7 +15,7 @@ fn main() {
         Some(day01p1), Some(day01p2),
         Some(day02p1), Some(day02p2),
         Some(day03p1), Some(day03p2),
-        None         , None,
+        Some(day04p1), Some(day04p2),
         None         , None,
         None         , None,
         None         , None,
