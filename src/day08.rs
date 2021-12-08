@@ -124,7 +124,7 @@ pub fn day08p2() {
             }
         }
 
-        for digit_sample in &digit_samples {  /*Finds 9*/
+        for digit_sample in &digit_samples {  /*Finds 9 (Through process of elimination)*/
             if digit_sample.len() == 6 {
                 let mut matched = false;
                 for val in known {
