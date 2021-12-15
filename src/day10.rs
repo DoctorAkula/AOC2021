@@ -126,8 +126,8 @@ pub fn day10p2() {
                 chunk_stack.pop();
             }
         }
-        for _i in 0..chunk_stack.len() {
-            match chunk_stack.pop().unwrap() {
+        while let Some(brace) = chunk_stack.pop() {
+            match brace {
                 '(' => line_ending.push(')'),
                 '[' => line_ending.push(']'),
                 '{' => line_ending.push('}'),
