@@ -59,6 +59,7 @@ fn parse_bin_string(bin_string : &String, packets : &mut Vec<Packet>,
                     mut packet_index : usize, mut packets_left : OperatorType) -> usize {
     let mut done = false;
     while !done {
+        let initial_index = packet_index;
         let packet_id = usize::from_str_radix(&bin_string[packet_index..packet_index+3], 2).unwrap();
         //println!("Packet ID {}", packet_id);
         packet_index += 3;
@@ -87,7 +88,7 @@ fn parse_bin_string(bin_string : &String, packets : &mut Vec<Packet>,
                 packets.push(packet);
                 match packets_left {
                     OperatorType::Bitcount(mut thingey) => {
-                        thingey -= next_index + 6;
+                        thingey -= packet_index - initial_index;
                         packets_left = OperatorType::Bitcount(thingey);
                         if thingey == 0 { done = true; }
                     },
@@ -114,7 +115,7 @@ fn parse_bin_string(bin_string : &String, packets : &mut Vec<Packet>,
                 packets.push(packet);
                 match packets_left {
                     OperatorType::Bitcount(mut thingey) => {
-                        thingey -= next_index + 6;
+                        thingey -= packet_index - initial_index;
                         packets_left = OperatorType::Bitcount(thingey);
                         if thingey == 0 { done = true; }
                     },
@@ -273,15 +274,15 @@ fn calc_packets(packets : &Vec<Packet>, operation : usize) -> usize {
 }
 
 pub fn day16p2() {
-    let input = loadinput("./input/test16-5.txt");
+    let input = loadinput("./input/day16.txt");
     let bin_string = create_bin_string(&input[0]);
     //println!("{}", bin_string);
 
     let mut packets : Vec<Packet> = Vec::new();
     parse_bin_string(&bin_string, &mut packets, 0, OperatorType::Bitcount(bin_string.len()));
-    for packet in &packets {
-        println!("{:#?}", packet);
-    }
+//    for packet in &packets {
+//        println!("{:#?}", packet);
+//    }
     let val = calc_packets(&packets, 0);
     println!("Value: {}", val);
 }
