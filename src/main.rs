@@ -2,7 +2,7 @@ mod loadinput;
 mod day01; mod day02; mod day03; mod day04; mod day05;
 mod day06; mod day07; mod day08; mod day09; mod day10;
 mod day11; mod day12; mod day13; mod day14; mod day15;
-mod day16;
+mod day16; mod day17;
 
 use crate::day01::*; use crate::day02::*;
 use crate::day03::*; use crate::day04::*;
@@ -12,6 +12,7 @@ use crate::day09::*; use crate::day10::*;
 use crate::day11::*; use crate::day12::*;
 use crate::day13::*; use crate::day14::*;
 use crate::day15::*; use crate::day16::*;
+use crate::day17::*;
 
 use std::env;
 use std::process::exit;
@@ -35,7 +36,7 @@ fn main() {
         Some(day14p1), Some(day14p2),
         Some(day15p1), Some(day15p2),
         Some(day16p1), Some(day16p2),
-        None         , None,
+        Some(day17p1), Some(day17p2),
         None         , None,
         None         , None,
         None         , None,
