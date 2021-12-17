@@ -49,10 +49,9 @@ pub fn day17p2() {
          doty_split.next().unwrap().parse().unwrap(),
          doty_split.next().unwrap().parse().unwrap())
     };
-                        /*  X      Y  */
-    let mut coords : Vec<(isize, isize)> = Vec::new();
-    for initvely in -1000..1000 {
-        for initvelx in 0..1000 {
+    let mut accumulator = 0;
+    for initvely in ylow..=1000 {
+        for initvelx in 0..=xhigh {
             let mut posx = 0;
             let mut posy = 0;
             let mut velx = initvelx;
@@ -64,12 +63,12 @@ pub fn day17p2() {
                 if velx > 0 { velx -= 1; }
                 if (posy <= yhigh) && (posy >= ylow) &&
                    (posx <= xhigh) && (posx >= xlow) { 
-                    coords.push((initvelx, initvely));
+                    accumulator += 1;
                     break; 
                 }
                 else if (posy < ylow) || (posx > xhigh) { break; }
             }
         }
     }
-    println!("Possible velocities: {}", coords.len());
+    println!("Possible velocities: {}", accumulator);
 }
